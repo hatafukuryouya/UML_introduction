@@ -1,0 +1,26 @@
+@startuml
+!define AWESOME https://raw.githubusercontent.com/awesometic/plantuml-icon-font-sprites/v1.4/sprites
+
+actor 患者 as patient
+actor 病院スタッフ as staff
+actor システム管理者 as admin
+
+rectangle "予約管理システム" {
+
+  usecase "予約作成" as UC1
+  usecase "予約変更" as UC2
+  usecase "予約キャンセル" as UC3
+  usecase "予約状況確認" as UC4
+  usecase "患者情報管理" as UC5
+
+  patient -- UC1
+  patient -- UC2
+  patient -- UC3
+  staff -- UC1
+  staff -- UC2
+  staff -- UC3
+  admin -- UC4
+  admin -- UC5
+
+}
+@enduml

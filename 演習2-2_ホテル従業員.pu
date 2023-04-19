@@ -1,0 +1,7 @@
+@startuml
+actor ホテル従業員 
+actor 経営者 
+
+経営者 --|> ホテル従業員 
+
+@enduml

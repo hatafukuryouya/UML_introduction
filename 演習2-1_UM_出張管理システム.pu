@@ -1,0 +1,25 @@
+@startuml 課題２－１
+left to right direction
+actor 申請者 as sinsei
+actor 承認者 as syounin
+actor 経理担当者 as keiri
+actor 交通費精算システム as sys
+
+rectangle 出張申請システム{
+usecase 出張申請を登録する as UC1
+usecase 出張申請を提出する as UC2
+usecase 出張申請を承認する as UC3
+usecase 出張申請を却下する as UC4
+usecase 出張申請を差し戻す as UC5
+usecase 出張申請を確認する as UC6
+}
+sinsei --> UC1
+sinsei --> UC2
+syounin --> UC3
+syounin -->UC4
+syounin --> UC5
+syounin --> UC6
+keiri --> UC6
+
+UC1 <-- sys
+@enduml
