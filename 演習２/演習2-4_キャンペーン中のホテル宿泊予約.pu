@@ -5,11 +5,11 @@ actor 利用者
 rectangle ホテル {
   usecase 予約をする as UC1
   usecase ログインをする as UC2
-  usecase キャンペーン価格で予約する as UC3
+  usecase "キャンペーン価格で予約する" as UC3
 }
 
 UC1 .> UC2 : <<include>>
-UC1 .> UC3 : <<extend>>
+UC1 .> UC3 : <<extend>> in キャンペーン期間
 
 利用者 --> UC1
 
