@@ -1,25 +1,30 @@
-@startuml 課題２－１
+@startuml
+!define AWESOME https://raw.githubusercontent.com/awesometic/plantuml-icon-font-sprites/v1.4/sprites
+
 left to right direction
-actor 申請者 as sinsei
-actor 承認者 as syounin
-actor 経理担当者 as keiri
-actor 交通費精算システム as sys
 
-rectangle 出張申請システム{
-usecase 出張申請を登録する as UC1
-usecase 出張申請を提出する as UC2
-usecase 出張申請を承認する as UC3
-usecase 出張申請を却下する as UC4
-usecase 出張申請を差し戻す as UC5
-usecase 出張申請を確認する as UC6
+actor 利用者 as user
+actor 管理者 as admin
+
+rectangle 病院管理システム {
+  usecase (予約する) as UC1
+  usecase (ログイン) as UC2
+  usecase (ログアウト) as UC3
+  usecase (予約を確認する) as UC4
+  usecase (予約を変更する) as UC5
+  usecase (予約をキャンセルする) as UC6
+
+  user --> UC1
+  user --> UC2
+  user --> UC3
+  user --> UC4
+  user --> UC5
+  user --> UC6
+
+  admin --> UC2
+  admin --> UC3
+  admin --> UC4
+  admin --> UC5
+  admin --> UC6
 }
-sinsei --> UC1
-sinsei --> UC2
-syounin --> UC3
-syounin -->UC4
-syounin --> UC5
-syounin --> UC6
-keiri --> UC6
-
-UC1 <-- sys
 @enduml
