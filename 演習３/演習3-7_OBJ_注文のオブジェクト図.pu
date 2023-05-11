@@ -1,4 +1,4 @@
-@startuml 家電
+@startuml 家電１
 left to right direction
 object "<u>重要顧客</u>" as imuser {
 氏名 = 高橋洋平
