@@ -1,0 +1,20 @@
+@startuml 商品
+hide footbox
+Actor 受注係
+participant "<u>バウンダリ:注文登録画面</u>" as sc <<boundary>>
+participant "<u>エンティティ:商品エンティティ</u>" as gu <<entity>>
+
+activate 受注係
+受注係 -> sc:注文情報を確認
+activate sc
+activate gu
+sc -> gu:商品情報表示
+gu --> sc:商品情報取得
+deactivate gu
+sc -> sc:商品登録
+
+受注係 -> sc:注文情報を確認
+create "<u>エンティティ:注文エンティティ</u>" as th <<entity>>
+sc --> th:<<create>>
+activate th
+@enduml
