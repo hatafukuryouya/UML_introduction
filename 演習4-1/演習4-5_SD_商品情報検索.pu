@@ -3,25 +3,31 @@ hide footbox
 Actor "<u>:会員</u>" as me
 participant ":商品検索画面" as se <<boundary>>
 participant ":商品検索コントローラ" as co  <<control>>
-participant "<u>:商品</u>" as go <<entity>>
-participant "<u>:商品カテゴリ</u>" as ca <<entity>>
-
 activate me
-    me -> se: 商品情報を検索
+    me -> se:注文情報を確認
     activate se
-        se -> co: 商品情報検索要求
+        se -> co:商品情報表示
         activate co
-            co -> go: 商品情報を検索
+            create "<u>:商品</u>" as go <<entity>>
+            co --> go:<<create>>生成()
+            create "<u>:商品カテゴリ</u>" as ca <<entity>>
+            loop 商品カテゴリ数
+            co --> ca:<<create>>生成()
+            co -> go:商品カテゴリを設定
             activate go
-            go --> co: 商品情報を返す
             deactivate go
-            co -> ca: 商品カテゴリを検索
-            activate ca
-            ca --> co: 商品カテゴリを返す
-            deactivate ca
-            co --> se: 検索結果を返す
-        deactivate co
-        se -> se: 商品情報表示
-        deactivate se
-deactivate me
+            end
+            se <-- co:商品情報
+            deactivate co
+            se -> se:商品情報表示
+            activate se
 @enduml
+
+
+
+
+
+
+
+
+
