@@ -1,0 +1,21 @@
+@startuml 画像検索
+hide footbox
+Actor ユーザー as us
+participant "<u>:ブラウザ</u>" as br
+participant "<u>webサーバー</u>" as web
+participant "<u>画像サーバー</u>" as ga
+
+activate us
+us -> br: 閲覧ボタンを押す
+activate br
+br -> web: 画像検索要求
+activate web
+web -> ga: 画像ファイル要求
+activate ga
+ga --> web: 画像ファイル提供
+deactivate ga
+web --> br: 画像ファイル送信
+deactivate web
+br --> us: 画像表示
+deactivate br
+@enduml
