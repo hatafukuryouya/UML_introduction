@@ -1,0 +1,12 @@
+@startuml ホテル
+skinparam packageStyle rectangle
+state 未使用{
+  予約済み -> 空室 :キャンセル
+  空室 -> 予約済み :予約
+}
+state 使用中{
+予約済み -->使用中 :チェックイン
+使用中 --> 空室 :チェックアウト
+}
+
+@enduml
