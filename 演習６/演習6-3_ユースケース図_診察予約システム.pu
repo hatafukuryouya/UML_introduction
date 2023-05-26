@@ -1,0 +1,21 @@
+@startuml 6-3
+title 診察予約システムのユースケース図
+
+left to right direction
+
+actor 患者
+actor 看護士
+
+rectangle "診察予約システム" {
+  (メニュー) as (A)
+  (予約と確認) as (B)
+  (あなたの順番) as (C)
+  (今の順番) as (D)
+
+  患者 -- (A)
+  患者 -- (B)
+  患者 -- (C)
+  患者 -- (D)
+  (D) -- 看護士 
+}
+@enduml
