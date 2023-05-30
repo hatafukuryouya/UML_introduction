@@ -1,0 +1,21 @@
+@startuml 自販機
+hide footbox
+actor "<u>:客</u>" as customer
+participant "<u>:料金装置</u>" as price
+participant "<u>:ボタン</u>" as button
+participant ":<u>ベンダー装置</u>" as vendor
+activate customer
+   customer -> price : お金を入れる
+   activate price
+      price -> button : ボタンを押す
+      deactivate price
+      activate button
+         button -> vendor : ドリンクを選ぶ
+         deactivate button
+         activate vendor
+            vendor --> vendor : ドリンクを出す
+            activate vendor
+                vendor --> customer : ドリンクを渡す
+         deactivate vendor
+      deactivate button
+@enduml
