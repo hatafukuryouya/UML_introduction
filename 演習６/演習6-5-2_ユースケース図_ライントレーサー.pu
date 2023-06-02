@@ -1,0 +1,16 @@
+@startuml LineTracer
+left to right direction
+actor 光センサー as LightSensor
+actor CPU
+actor ユーザー as User
+actor 左モーター as LeftMotor
+actor 右モーター as RightMotor
+rectangle ライントレーサー {
+    usecase "ラインの右境界線上を走る" as RunOnRightBoundary
+}
+LightSensor --> RunOnRightBoundary: "ラインを検知"
+CPU --> RunOnRightBoundary: "全体の制御"
+User --> RunOnRightBoundary: "電源の制御"
+RunOnRightBoundary  --> LeftMotor :"左旋回を制御"
+RunOnRightBoundary --> RightMotor :"右旋回を制御"
+@enduml
